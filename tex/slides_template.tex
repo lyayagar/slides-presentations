@@ -1,0 +1,265 @@
+% !TEX TS-program = pdflatexmk
+%\makeatletter\let\ifGm@compatii\relax\makeatother
+\documentclass[pdftex,12pt,xcolor=pdftex,table]{beamer}
+%\documentclass[handout,12pt,xcolor=pdftex,table]{beamer}
+\synctex=1
+\usepackage{comment}
+\usepackage{etex}
+\usepackage{amsmath}
+\usepackage{amsthm}
+\usepackage{amsfonts}
+\usepackage{amssymb}
+\usepackage{latexsym}
+\usepackage{mathtools}
+\usepackage[english]{babel}
+\usepackage[utf8]{inputenc}
+\usepackage{tikz}
+\usetikzlibrary{calc,matrix,shapes,arrows}
+\usepgflibrary{shapes.arrows}
+\usepackage[nomessages]{fp}% http://ctan.org/pkg/fp
+\newcounter{mycols}
+%\usepackage[pdf]{pstricks}
+%\usepackage{auto-pst-pdf}
+%\usepackage{pst-all}
+%%\usepackage{pst-math}
+%%\usepackage{pstricks-add}
+%%\usepackage{pst-3dplot}
+\usepackage[]{graphicx}
+\usepackage[sort]{natbib}
+\usepackage{bibentry}
+\usepackage{booktabs}
+%\usepackage{omer}
+\usepackage{layout}
+\usepackage[justification=centering,figureposition=bottom]{caption}
+\usepackage{longtable}
+\usepackage{lscape}
+\usepackage{rotating}
+\usepackage[figtopcap,center,scriptsize]{subfigure}%[figtopcap]
+\usepackage{appendix}
+\usepackage{setspace}
+\usepackage[multiple,stable]{footmisc}
+\captionsetup[longtable]{width=.75\textwidth}
+%\usepackage{authblk}
+%\usepackage[hypertexnames=false,breaklinks=false,final,pdftoolbar=true,pagebackref=true,pdfborder={0 0 0},bookmarks=true,bookmarksnumbered=true,linkbordercolor={1 0 0},backref=false,breaklinks]{hyperref}
+%%\usepackage[hypertexnames=false,breaklinks=false,final,ps2pdf,pdftoolbar=true,pagebackref=true,pdfborder={0 0 0},bookmarks=true,bookmarksnumbered=true,linkbordercolor={1 0 0},backref=false,breaklinks]{hyperref}
+%
+%
+%%\newcounter{tablefootnote}[table]
+%%\setcounter{tablefootnote}{2}
+\DeclareGraphicsExtensions{.png,.pdf}
+\DeclareTextFontCommand{\emph}{\bfseries}
+
+%% THEOREMS -------------------------------------------------------
+\newtheorem{thm}{Theorem}[section]
+\newtheorem{cor}[thm]{Corollary}
+\newtheorem{lem}[thm]{Lemma}
+\newtheorem{prop}[thm]{Proposition}
+\theoremstyle{definition}
+\newtheorem{defn}[thm]{Definition}
+\theoremstyle{remark}
+\newtheorem{rem}[thm]{Remark}
+\numberwithin{equation}{section}
+%
+%% MATH -----------------------------------------------------------
+\newcommand{\set}[1]{\left\{#1\right\}}
+\newcommand{\eps}{\varepsilon}
+\newcommand{\To}{\longrightarrow}
+
+\newcounter{panel}[table]
+\renewcommand{\thepanel}{\Alph{panel}}
+\newcommand{\mypanel}[1][]{\refstepcounter{panel}Panel \thepanel: \ #1}
+
+\newenvironment{stepenumerate}{\begin{enumerate}[<+->]}{\end{enumerate}}
+\newenvironment{stepitemize}{\begin{itemize}[<+->]}{\end{itemize} }
+%\newenvironment{stepitemize}{\begin{itemize}}{\end{itemize} }
+\newenvironment{stepenumeratewithalert}{\begin{enumerate}[<+-| alert@+>]}{\end{enumerate}}
+\newenvironment{stepitemizewithalert}{\begin{itemize}[<+-| alert@+>]}{\end{itemize} }
+\newtheorem{assumption}{Assumption}
+\newtheorem{proposition}{Proposition}
+\usetheme{CambridgeUS}
+\setbeamertemplate{navigation symbols}{}
+\numberwithin{figure}{section}
+
+\makeatletter
+\let\@@magyar@captionfix\relax
+\makeatother
+
+%\mode<presentation>
+%{
+%  \usetheme{Warsaw}
+  \setbeamercovered{transparent}
+%  \setbeamerfont{frametitle}{size=\small}
+%  \setbeamerfont{subsection in head/foot}{size=\tiny}
+%  \setbeamerfont{section in head/foot}{size=\tiny}
+%%  \setbeamertemplate{footline}[frame number]
+%}
+%%\setbeamertemplate{navigation symbols}{}
+%\expandafter\def\expandafter\insertshorttitle\expandafter{%
+%  \insertshorttitle\hfill%
+%  \insertframenumber\,/\,\inserttotalframenumber}
+%  
+%\usetheme{Warsaw}
+\usepackage{multicol}
+
+%\makeatletter
+%\def\insertsectionnavigation#1{%
+%  \hbox to #1{\vbox{{\usebeamerfont{section in head/foot}%
+%     \usebeamercolor[fg]{section in head/foot}%
+%     \def\slideentry##1##2##3##4##5##6{}%
+%     \def\sectionentry##1##2##3##4##5{%
+%       \ifnum##5=\c@part%
+%       \def\insertsectionhead{##2}%
+%       \def\insertsectionheadnumber{##1}%
+%       \def\insertpartheadnumber{##5}%
+%         \hyperlink{Navigation##3}{%
+%             \ifnum\c@section=##1%
+%               {\usebeamertemplate{section in head/foot}}%
+%             \else%
+%               {\usebeamertemplate{section in head/foot shaded}}%
+%             \fi%
+%         }\par
+%       \fi}%
+%       \parbox[c][0cm][c]{.45\paperwidth}{%
+%       \begin{multicols}{2}      
+% 	\dohead
+%       \end{multicols}}\space}
+%     }%
+%  \hfil}%
+%}
+%
+%\def\insertsubsectionnavigation#1{%
+%  \hbox to #1{%
+%    \vbox{{%
+%      \usebeamerfont{subsection in head/foot}\usebeamercolor[fg]{subsection in head/foot}%
+%      \vskip0.6ex%
+%      \beamer@currentsubsection=0%
+%      \def\sectionentry##1##2##3##4##5{}%
+%      \def\slideentry##1##2##3##4##5##6{\ifnum##6=\c@part\ifnum##1=\c@section%
+%        \ifnum##2>\beamer@currentsubsection%
+%        \beamer@currentsubsection=##2%
+%        \def\insertsubsectionhead{##5}%
+%        \def\insertsectionheadnumber{##1}%
+%        \def\insertsubsectionheadnumber{##2}%
+%        \def\insertpartheadnumber{##6}%
+%        \beamer@link(##4){%
+%              \ifnum\c@subsection=##2%
+%                {\usebeamertemplate{subsection in head/foot}}%
+%              \else%
+%                {\usebeamertemplate{subsection in head/foot shaded}}%
+%              \fi\hfill}\par
+%        \fi\fi\fi}%
+%       \hspace*{0.7em}\parbox[c][0cm][c]{\dimexpr.6\paperwidth-1em\relax}{%
+%       \begin{multicols}{2}
+%       \dohead\vskip0.6ex\end{multicols}
+%       }\space
+%   }\hfil
+%}}}
+%
+%\setbeamertemplate{headline}
+%{%
+%  \leavevmode\@tempdimb=2.4375ex%
+%  \ifnum\beamer@subsectionmax<\beamer@sectionmax%
+%    \multiply\@tempdimb by\beamer@sectionmax%
+%  \else%
+%    \multiply\@tempdimb by\beamer@subsectionmax%
+%  \fi%
+%  \ifdim\@tempdimb>0pt%
+%    \advance\@tempdimb by 1.125ex%
+%    \begin{beamercolorbox}[wd=.47\paperwidth,ht=0.5\@tempdimb,dp=2ex]{section in head/foot}%
+%      \vbox to0.5\@tempdimb{\vfill\insertsectionnavigation{.5\paperwidth}\vfill}%
+%    \end{beamercolorbox}%
+%    \begin{beamercolorbox}[wd=.53\paperwidth,ht=0.5\@tempdimb,dp=2ex]{subsection in head/foot}%
+%      \vbox to0.5\@tempdimb{\vfill\insertsubsectionnavigation{.5\paperwidth}\vfill}%
+%    \end{beamercolorbox}%
+%  \fi%
+%}
+%\makeatother
+
+%\usepackage{tikz}
+%\usetikzlibrary{calc}
+
+\tikzset{arrowcases/.style={matrix anchor=west,%
+  nodes={anchor=base west,%
+         name=arrc-\the\pgfmatrixcurrentrow-\the\pgfmatrixcurrentcolumn},%
+  execute at begin cell=\node\bgroup\math\displaystyle,%
+  execute at end cell=\endmath\egroup;,%
+  ampersand replacement=\&}}
+
+\def\beginarrowcases#1\endarrowcases{
+\begin{tikzpicture}[baseline=(O)]
+  \matrix [arrowcases] {
+  #1
+  };
+  \coordinate (A) at (arrc-1-1.west);
+  \coordinate (B) at (arrc-\the\pgfmatrixcurrentrow-1.west);
+  \coordinate (start) at ($(A)!0.5!(B) - (5em,0)$);
+  \foreach \nn in {1,...,\pgfmatrixcurrentrow} {
+    \draw[double, -triangle 45,<->] ($(start)+(0,1.5em - \nn em)$) -- (arrc-\nn-1.west);
+  };
+  \coordinate (O) at ($(start)-(0,0.5ex)$);
+  \node at (-1em,0) {};
+\end{tikzpicture}}
+
+\makeatother
+\setbeamertemplate{footline}
+{
+  \leavevmode%
+  \hbox{%
+  \begin{beamercolorbox}[wd=.25\paperwidth,ht=2.25ex,dp=1ex,center]{author in head/foot}%
+    \usebeamerfont{author in head/foot}\insertshortauthor
+  \end{beamercolorbox}%
+  \begin{beamercolorbox}[wd=.4\paperwidth,ht=2.25ex,dp=1ex,center]{title in head/foot}%
+    \usebeamerfont{title in head/foot}\insertshorttitle
+  \end{beamercolorbox}%
+  \begin{beamercolorbox}[wd=.35\paperwidth,ht=2.25ex,dp=1ex,center]{date in head/foot}%
+  \insertshortdate{}\hspace*{3ex}
+    \insertframenumber{} / \inserttotalframenumber\hspace*{1ex}
+  \end{beamercolorbox}}%
+  \vskip0pt%
+}
+\makeatletter
+
+\title[Short Title]{Full Title}
+\author[Ömer Özak (SMU)]{\Large Ömer Özak}
+\institute[]{\Large SMU}
+\date[Where]{\small Where}
+
+%\AtBeginSection[]{
+%
+%  \frame<beamer>{ 
+%
+%    \frametitle{}   
+%	\sectionpage
+%    %\tableofcontents[currentsection] 
+%
+%  }
+%
+%}
+
+\makeatletter
+\@addtoreset{subfigure}{figure}
+\makeatother
+\makeatletter \@addtoreset{subfigure}{framenumber} \makeatother
+
+\begin{document}
+
+\begin{frame}%[plain]
+\titlepage
+\end{frame}
+
+
+%\begin{frame}
+%\titlepage
+%\def\newblock{}
+%\bibliographystyle{econometrica}
+%\nobibliography{}
+%\end{frame}
+
+
+\end{document}
+
+\begin{frame}[allowframebreaks]{}
+\def\newblock{}
+\bibliographystyle{econometrica}
+\bibliography{}
+\end{frame}
