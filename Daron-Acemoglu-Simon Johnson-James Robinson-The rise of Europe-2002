@@ -125,7 +125,7 @@
 \makeatletter \@addtoreset{subfigure}{framenumber} \makeatother
 
 \begin{document}
-\author[Manuel \& Aprendiendo]{JAIR EBRATT RINCON \& DANIEL ALEJANDRO DIAZ DURAN}
+\author{JAIR EBRATT RINCON \& DANIEL ALEJANDRO DIAZ DURAN}
 \title{THE RISE OF EUROPE: ATLANTIC TRADE, INSTITUTIONAL CHANGE AND ECONOMIC GROWTH}
 \date{JUNE 18, 2020} 
 \subtitle{PAPER PRESENTATION}
@@ -343,3 +343,4 @@
 		\end{frame}	    
 		
 \end{document}
+
